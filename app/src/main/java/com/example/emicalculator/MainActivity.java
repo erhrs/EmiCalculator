@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView Emi;
     private EditText LoanAmt, Years, Rate;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,22 +22,24 @@ public class MainActivity extends AppCompatActivity {
         Years = findViewById(R.id.editTextYears);
         Rate = findViewById(R.id.editTextRate);
         Emi = findViewById(R.id.textEmi);
+
     }
     @SuppressLint("SetTextI18n")
     public void calEmi(View view){
-        String amt = LoanAmt.getText().toString();
-        String years = Years.getText().toString();
-        String rate = Rate.getText().toString();
 
-        Double p = Double.parseDouble(amt);
-        Double n = (Double.parseDouble(years))*12;
-        Double r = ((Double.parseDouble(rate))/12)/100;
-        Double y = 1+r;
-        Double x = Math.pow(y,n);
+            String amt = LoanAmt.getText().toString();
+            String years = Years.getText().toString();
+            String rate = Rate.getText().toString();
 
-        Double emi = (p*r)*(x/(x-1));
+            Double p = Double.parseDouble(amt);
+            Double n = (Double.parseDouble(years)) * 12;
+            Double r = ((Double.parseDouble(rate)) / 12) / 100;
+            Double y = 1 + r;
+            Double x = Math.pow(y, n);
 
-        Emi.setText("EMI:"+Math.round(emi));
+            Double emi = (p * r) * (x / (x - 1));
+
+            Emi.setText("Monthly EMI : Rs." + Math.round(emi));
     }
 
 }
